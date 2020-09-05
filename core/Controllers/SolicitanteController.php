@@ -11,6 +11,8 @@
     require_once("../Entities/Solicitante.php");
     require_once("../Models/Conexion.php");
     require_once("../Entities/Usuario.php");
+    require_once("../Entities/CiudadDep.php");
+    require_once("../Entities/SectorEconomico.php");
     
     switch ($method) {
         case 'GET'://///////////////////////////////////////////////GET
@@ -53,6 +55,10 @@
             }
             break;
         case 'POST'://///////////////////////////////////////////////POST
+            
+            $post_vars = $_POST;
+            if(sizeof($post_vars) <= 0)
+                $_POST = json_decode(file_get_contents('php://input'), true);
             $post_vars = $_POST;
             $m['mensaje'] = guardarDatos($post_vars);
             echo json_encode($m, JSON_FORCE_OBJECT);    
@@ -110,49 +116,52 @@
     }
     
 ////////////////////////////////////////funcion guardarDatos($post_Vars), retorno CORRECTO, INCORRECTO, ERROR ///////////////////////////////
-    function guardarDatos($post_vars){
-        $solicitanteModel = new SolicitanteModel();
-        $solicitante = new Solicitante();
-        $solicitante->setNombreCompleto(trim($post_vars['nombreCompleto']));
-        $solicitante->setCorreo(trim($post_vars['correo']));
-        $solicitante->setTelefono(trim($post_vars['telefono']));
-        $solicitante->setIdentificacion(trim($post_vars['identificacion']));
-        $now =  date("Y-m-d");
-        $solicitante->setFechaRegistro($now);
-        $valid = $solicitante->validarDatos();
-        if($valid){
-            $sql = "select * from cia.solicitante s where s.activo = ".$activo.";";
-            $listaD = $solicitanteModel->listarSolicitantes($sql);
-            foreach ($listaD as $registro) {
-                if(in_array($solicitante->getCorreo(), $registro)){
-                    Conexion::setConnection(null);
-                    return "INCORRECTO";
-                    break;
-                }
-                if(in_array($solicitante->getTelefono(), $registro)){
-                    Conexion::setConnection(null);
-                    return "INCORRECTO";
-                    break;
-                }
-                if(in_array($solicitante->getIdentificacion(), $registro)){
-                    Conexion::setConnection(null);
-                    return "INCORRECTO";
-                    break;
-                }
-            }
-            $r = (int) $solicitanteModel->guardarRegistro($solicitante);
-            if($r > 0){
-                $solicitanteModel->con = null;
+function guardarDatos($post_vars) {
+    $solicitanteModel = new SolicitanteModel();
+    $solicitante = new Solicitante();
+    $solicitante->setNombreCompleto(trim($post_vars['nombreCompleto']));
+    $solicitante->setCorreo(trim($post_vars['correo']));
+    $solicitante->setTelefono(trim($post_vars['telefono']));
+    $solicitante->setDireccion(trim($post_vars['direccion']));
+    $solicitante->m_CiudadDep = new Entities\CiudadDep();
+    $solicitante->m_CiudadDep->setCiudadDepID (trim($post_vars["cuidadDep"]));
+    $solicitante->m_SectorEconomico = new Entities\SectorEconomico();
+    $solicitante->m_SectorEconomico->setSectorEconomicoID(trim($post_vars["sectorEconomico"]));
+//        $solicitante->setIdentificacion(trim($post_vars['identificacion']));
+    $now = date("Y-m-d");
+    $solicitante->setFechaRegistro($now);
+    $solicitante->setActivo(1);
+
+    $valid = $solicitante->validarDatos();
+    if ($valid) {
+        $sql = "select * from solicitante s where s.activo =1;";
+        $listaD = $solicitanteModel->listarSolicitantes($sql);
+        foreach ($listaD as $registro) {
+            if (in_array($solicitante->getCorreo(), $registro)) {
                 Conexion::setConnection(null);
-                return "CORRECTO";
-            }else{
-                $solicitanteModel->con = null;
-                Conexion::setConnection(null);
-                return 'INCORRECTO';
+                return "INCORRECTO";
+                break;
             }
-        }else
+            if (in_array($solicitante->getTelefono(), $registro)) {
+                Conexion::setConnection(null);
+                return "INCORRECTO";
+                break;
+            }
+        }
+        $r = (int) $solicitanteModel->guardarRegistro($solicitante);
+        if ($r > 0) {
+            $solicitanteModel->con = null;
+            Conexion::setConnection(null);
+            return "CORRECTO";
+        } else {
+            $solicitanteModel->con = null;
+            Conexion::setConnection(null);
             return 'INCORRECTO';
-    }
+        }
+    } else
+        return 'INCORRECTO';
+}
+
 //////////////////////////////7//////////////////////////////////////imprimir lista de solicitantes/////////////////////////////////////////////////////////
     function imprimirLista(){
         $solicitanteModel = new SolicitanteModel();

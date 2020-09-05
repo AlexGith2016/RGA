@@ -16,7 +16,7 @@ use DateTimeZone;
 class Conexion {
 
     private static $con;
-    private static $url = 'mysql:host=localhost; dbname:cia;port=3306';
+    private static $url = 'mysql:host=localhost; dbname=cia; port=3306';
     private static $user = 'root';
     private static $password = ''; //'banca2020.';
     private static $INSTANCE;

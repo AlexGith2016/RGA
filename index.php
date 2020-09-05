@@ -1,4 +1,5 @@
 <?php
+    $method = $_SERVER['REQUEST_METHOD'];
     $view = isset($_GET['view']) ? $_GET['view'] : 'Index';
     
     if (file_exists('core/Controllers/'.$view.'Controller.php')) {

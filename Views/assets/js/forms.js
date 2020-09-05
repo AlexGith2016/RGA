@@ -20,22 +20,22 @@
     	/****************************************************************
     	* Contact form
     	****************************************************************/
-    	$('.contact-form div[role=form] input, .contact-form div[role=form] textarea').on('focus', function() {
-    		$('.contact-form div[role=form] input, .contact-form div[role=form] textarea').removeClass('contact-error');
-    	});
-    	enableFields();//activar fields disableds por checkbox
+//    	$('.contact-form div[role=form] input, .contact-form div[role=form] textarea').on('focus', function() {
+//    		$('.contact-form div[role=form] input, .contact-form div[role=form] textarea').removeClass('contact-error');
+//    	});
+//    	enableFields();//activar fields disableds por checkbox
     	registerForm();//enviar datos
     	
     	/*******************************************************************
     	 * Cargar selects
     	*****************************************************************/
     	
-    	var controller = "SectorEconomicoController.php";
-    	cargarSelect("select[name=sectorEconomico]", controller, function(datos) {
-    	    $(datos).each(function(i, v) {
-            	$("select[name=sectorEconomico]").append('<option value="' + v.sectorEconomicoID + '">'+ v.nombreSectorEc +'</option>');
-      		});
-    	});
+                var controller = "SectorEconomicoController.php";
+                cargarSelect("select[name=sectorEconomico]", controller, function (datos) {
+                    $(datos).each(function (i, v) {
+                        $("select[name=sectorEconomico]").append('<option value="' + v.sectorEconomicoId + '">' + v.nombreSectorEc + '</option>');
+                    });
+                });
             
       		/***************************************
       		 * Cambiar carreras cuando se cambie la universidad
@@ -58,14 +58,14 @@
             event.preventDefault();
             var id_form = $(this).attr("id");
             var data = new FormData();
-            if($(this).find('input[type=file]').length > 0){
-                jQuery.each($(this).find('input[type=file]')[0].files, function(i, file) {
-                    data.append('cv', file);
-                });
-                jQuery.each($(this).find('input[type=file]')[1].files, function(i, file) {
-                    data.append('cartaIntencion', file);
-                });
-            }
+//            if($(this).find('input[type=file]').length > 0){
+//                jQuery.each($(this).find('input[type=file]')[0].files, function(i, file) {
+//                    data.append('cv', file);
+//                });
+//                jQuery.each($(this).find('input[type=file]')[1].files, function(i, file) {
+//                    data.append('cartaIntencion', file);
+//                });
+//            }
             var other_data = $(this).serializeArray();
             $.each(other_data,function(key,input){
                 data.append(input.name,input.value);
@@ -89,15 +89,15 @@
         });
     }
 /////////////////////////////////////////////////habilitar field con checkbox////////////////////////////////////////////////////////////////
-    function enableFields() {
-        var check = $( "form[role=form] input[type=checkbox]" ).change(function(){
-            var ch = $(this).is(':checked') ? true : false;
-            if(ch)
-                $(this).closest("form").find(".dis").removeAttr('disabled');
-            else
-                $(this).closest("form").find(".dis").attr('disabled', 'disabled');
-        });
-    }
+//    function enableFields() {
+//        var check = $( "form[role=form] input[type=checkbox]" ).change(function(){
+//            var ch = $(this).is(':checked') ? true : false;
+//            if(ch)
+//                $(this).closest("form").find(".dis").removeAttr('disabled');
+//            else
+//                $(this).closest("form").find(".dis").attr('disabled', 'disabled');
+//        });
+//    }
 /////////////////////////////////////////////////ver resultado del AJAX//////////////////////////////////////////////////////////////////////
     var verResultado = function(r, f) {//parametro(resultado-String)
         console.log(f);
