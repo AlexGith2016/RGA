@@ -266,23 +266,23 @@ nav a:focus, #cssmenu li:focus { color: #c0cec0; outline: 0; }
 }
 
 
-/***** What we do *****/
+/***** servicios *****/
 
-.what-we-do-box {
+.servicios-box {
 	margin-top: 30px;
 }
 
-.what-we-do-box h3 {
+.servicios-box h3 {
 	padding: 10px 0;
 }
 
-.what-we-do-box p {
+.servicios-box p {
 	font-size: 18px;
 	color: #000;
     line-height: 32px;
 }
 
-.what-we-do-box .what-we-do-box-icon {
+.servicios-box .servicios-box-icon {
     width: 120px;
 	height: 120px;
     margin: 0 auto;
@@ -295,7 +295,7 @@ nav a:focus, #cssmenu li:focus { color: #c0cec0; outline: 0; }
     text-align: center;
 }
 
-.what-we-do-box .what-we-do-box-icon i, .what-we-do-box .what-we-do-box-icon span { vertical-align: middle; }
+.servicios-box .servicios-box-icon i, servicios-box servicios-box-icon span { vertical-align: middle; }
 
 
 /***** Block 1 *****/

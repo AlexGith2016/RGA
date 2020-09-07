@@ -4,9 +4,14 @@
     <head>
 
         <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="Página principal">
+        <meta name="description" content="Página principal del sitio Rojas Gonzalez Abogados & Asociados de Nicaragua el cual es un sitio de consultoria de derechos, la cual es una de las firmas de abogados de Nicaragua con más experiencia">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <META NAME="geo.position" CONTENT="latitude; longitude">
+        <META NAME="geo.placename" CONTENT="Rojas Gonzáles Abogados $ Asociados Nicaragua">
+        <META NAME="geo.region" CONTENT="NI-MN">
+        <meta name="robots" content="index, follow"> 
         <title>RGA - Rojas González Abogados & asociados</title>
 
         <!-- CSS -->
@@ -56,11 +61,11 @@
             </div>
         </div>
 
-        <!-- Services -->
-        <div class="what-we-do-container section-container">
+        <!-- Servicios -->
+        <div class="servicios-container section-container">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12 what-we-do section-description wow fadeIn">
+                    <div class="col-sm-12 servicios section-description wow fadeIn">
                         <h2>Servicios que ofrecemos</h2>
                         <div class="divider-1 wow fadeInUp"><span></span></div>
                         <p>
@@ -69,18 +74,18 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4 what-we-do-box wow fadeInUp">
-                        <div class="what-we-do-box-icon"><i class="fa fa-weixin"></i></div>
+                    <div class="col-sm-4 servicios-box wow fadeInUp">
+                        <div class="servicios-box-icon"><i class="fa fa-weixin"></i></div>
                         <h3>Proyectos</h3>
                         <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet</p>
                     </div>
-                    <div class="col-sm-4 what-we-do-box wow fadeInDown">
-                        <div class="what-we-do-box-icon"><i class="fa fa-check-square-o"></i></div>
+                    <div class="col-sm-4 servicios-box wow fadeInDown">
+                        <div class="servicios-box-icon"><i class="fa fa-check-square-o"></i></div>
                         <h3>Experiencia</h3>
                         <p>Ut vulputate pharetra dolor vel laoreet. Sed sed mauris in lorem fermentum bibendum at quis augue.</p>
                     </div>
-                    <div class="col-sm-4 what-we-do-box wow fadeInUp">
-                        <div class="what-we-do-box-icon"><i class="fa fa-gears"></i></div>
+                    <div class="col-sm-4 servicios-box wow fadeInUp">
+                        <div class="servicios-box-icon"><i class="fa fa-gears"></i></div>
                         <h3>Apoyo</h3>
                         <p>There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain
                     </div>
@@ -370,7 +375,7 @@
                                                           class="planCrecimiento" id="planCrecimiento"
                                                           maxlength="200"></textarea>
                                             </div>-->
-                                            <button type="submit" class="btn1">Enviar</button>
+                                            <button type="submit" class="btn1" onclick="this.disabled=true;">Enviar</button>
                                             <button type="reset" class="btnC">Limpiar</button>
                                         </form>
                                     </div>
