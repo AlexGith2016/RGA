@@ -55,14 +55,14 @@
                                     <input type="number" name="telefono" placeholder="Teléfono o celular..."
                                            class="telefono" id="telefono" required min="11111111" max="9999999999" readonly>
                                 </div>
-                                <!--identificacion-->
+                                <!--direccion-->
                                 <div class="form-group">
-                                    <label for="identificacion">Identificación:</label>
-                                    <input type="text" name="identificacion" placeholder="Identificación..." 
-                                           class="pais" required maxlength="30" readonly>
+                                    <label for="direccion">Dirección:</label>
+                                    <input type="text" name="direccion" placeholder="Direccion..." 
+                                           class="direccion" required maxlength="200" readonly>
                                 </div>
                                 <div class="form-group text-center">
-                                    <div style="" class="col-md-offset-4 col-md-4 text-center">
+                                    <div class="col-md-offset-4 col-md-4 text-center">
                                         <button id="btnEnviar" type="button" class="btn btn-primary" data-dismiss="modal" onclick="limpiar_texto();">
                                             <span><i class="fa fa-check" aria-hidden="true"></i></span> Aceptar
                                         </button>
@@ -132,7 +132,7 @@
 		$("#formSolicitante input[name=nombreCompleto]").val("");
 		$("#formSolicitante input[name=correo]").val("");
 		$("#formSolicitante input[name=telefono]").val("");
-		$("#formSolicitante input[name=identificacion]").val("");
+		$("#formSolicitante input[name=direccion]").val("");
 	}
 ///////////////////////////////Ejecutar el metodo DataTable para llenar la Tabla////////////////////////////////
     function iniciarTabla(){
@@ -204,7 +204,7 @@
     
     var imprimirLista = function(table) {//////////////imprimir lista de solicitantes
             console.log("imprimir lista de solicitantes");
-            window.open("/core/Controllers/SolicitanteController.php/?opcion=2","Lista de solicitantes - CIA");
+            window.open("core/Controllers/SolicitanteController.php?opcion=2","Lista de solicitantes - CIA");
     }
 
 ///////////////////////////funsión que activa el evento click del boton imprimir ficha del dataTable////////////////////
@@ -212,7 +212,7 @@
         $(tbody).on("click", "button.imprimirFicha", function() {
             var datos = table.row($(this).parents("tr")).data();
             console.log("imprimirFicha");
-            var id = datos.solicitanteID;
+            var id = datos.solicitanteId;
             imprimirF =	"<p Style='text-align:center; color:black; font-size: large;'>¿Desea imprimir la ficha de "+
                     "informe de este solicitante?</p>"+
                     "<div class='text-center' style='width:100%;'>"+
@@ -227,11 +227,11 @@
     var obtener_datos_visualizar = function(tbody, table) {//parametro(id_tabla, objeto dataTable)
         $(tbody).on("click", "button.visualizarD", function() {
             var datos = table.row($(this).parents("tr")).data();
-            $("#formSolicitante input[name=solicitanteID]").val(datos.solicitanteID);
+            $("#formSolicitante input[name=solicitanteID]").val(datos.solicitanteId);
             $("#formSolicitante input[name=nombreCompleto]").val(datos.nombreCompleto);
             $("#formSolicitante input[name=correo]").val(datos.correo);
             $("#formSolicitante input[name=telefono]").val(datos.telefono);
-            $("#formSolicitante input[name=identificacion]").val(datos.identificacion);
+            $("#formSolicitante input[name=direccion]").val(datos.direccion);
             console.log("visualizar");
             $('.modalSolicitante').modal({
                 backdrop: true,
@@ -246,7 +246,7 @@
             ev.preventDefault();
             var idS= $("input#idSolicitante").val();
             console.log("realizar Acción de imprimir ficha");
-            window.open("/core/Controllers/SolicitanteController.php/?opcion=3&id="+idS,"ficha de participación de Solicitante - CIA");
+            window.open("core/Controllers/SolicitanteController.php?opcion=3&id="+idS,"ficha de participación de Solicitante - CIA");
         });
     }
 /////////////////////////////////////////////////FUNSIÓN PRINCIPAL/////////////////////////////////////////////////

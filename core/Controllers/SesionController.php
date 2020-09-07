@@ -61,7 +61,7 @@
             $cantidad = $usuarioModel->buscarUsuario($usuario);
             if($cantidad == 1){
                 $now =  date("m/Y");
-                if(trim($post_vars["token"]) == "cia-uca"){
+                if(trim($post_vars["token"]) == "2020"){
                     $result = $usuarioModel->results->fetch(PDO::FETCH_ASSOC);
                     $usuario->m_Rol = new Rol();
                     $usuario->m_Rol->setnombreRol($result["nombreRol"]);

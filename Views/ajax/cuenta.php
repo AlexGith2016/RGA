@@ -97,7 +97,7 @@
 					console.log(info);
 					var m = JSON.parse(info);
 					if(m.mensaje =="OK"){
-					location.href ="/?view=Sesion";
+					location.href ="index.php?view=Sesion";
 					}else{
 					mostrarMensaje("#dialogM", m.titulo, m.mensaje, m.tipo);
 					limpiar_texto();

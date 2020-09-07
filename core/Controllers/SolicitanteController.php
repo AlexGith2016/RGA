@@ -78,7 +78,7 @@
 /////////////////////////////////////////////////////////cargarSolicitantes(activos), enviar la lista//////////////////////////////////////////////////////
     function cargarSolicitantes($activo){
         $solicitanteModel = new SolicitanteModel();
-        $sql = "select * from cia.solicitante s where s.activo = ".$activo.";";
+        $sql = "select * from solicitante s where s.activo = ".$activo.";";
         $resultados = $solicitanteModel->listarSolicitantes($sql);
         if($resultados != null && !empty($resultados)){
             $solicitanteModel->con = null;
@@ -170,12 +170,13 @@ function guardarDatos($post_vars) {
         $solicitanteModel->con = null;
         Conexion::setConnection(null);
         $now = date("d-m-Y");
-        require_once("../Libs/mpdf/mpdf.php");
+        
+        require_once("../Libs/mpdf/vendor/autoload.php");
         $body='<body>
         	<header class="clearfix">
         		<div class="container">
         		    <figure>
-        				<img style="border-radius: 5px;" class="logo" src="../../Views/assets/ico/apple-touch-icon-72-precomposed.jpg" alt="">
+        				<img style="border-radius: 5px;" class="logo" src="../../Views/assets/ico/apple-touch-icon.png" alt="">
         			</figure>
         			<div class="company-info" style="text-align: right;">
         				<h2 class="title">Centro de Innovación</h2>
@@ -225,8 +226,8 @@ function guardarDatos($post_vars) {
                 							<h3 style="color:#57a03a; font-weight:600; font-size:1.4rem;">Teléfono:</h3>
                 							<p style="font-weight:normal; font-size:1em;">'.$value["telefono"].'</p>
                 							
-                							<h3 style="color:#57a03a; font-weight:600; font-size:1.4rem;">Identificación:</h3>
-                							<p style="font-weight:normal; font-size:1em;">'.$value["identificacion"].'</p>
+                							<h3 style="color:#57a03a; font-weight:600; font-size:1.4rem;">Dirección:</h3>
+                							<p style="font-weight:normal; font-size:1em;">'.$value["direccion"].'</p>
                 							
                 							<br/>
                 						</td>
@@ -247,7 +248,7 @@ function guardarDatos($post_vars) {
         	</footer>
         </body>';
         $css = file_get_contents("../../Views/assets/css/lista.css");
-        $mpdf = new mPDF('c','A4');
+        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L']);
         $mpdf->SetFooter('CIA-UCA||{PAGENO}');
         $mpdf->shrink_tables_to_fit = 1;
         $mpdf->writeHTML($css, 1);
@@ -267,7 +268,7 @@ function guardarDatos($post_vars) {
         $solicitanteModel->con = null;
         Conexion::setConnection(null);
         $now = date("d-m-Y");
-        require_once("../Libs/mpdf/mpdf.php");
+        require_once("../Libs/mpdf/vendor/autoload.php");
         $body='<body>
 	<section>
 		<div class="container">
@@ -301,8 +302,8 @@ function guardarDatos($post_vars) {
                 			<p style="font-weight:normal; font-size:13px;">'.$resultado[0]["correo"].'</p>
 						</td>
 						<td style="border:1px solid #C0C0C0; padding:5px; font-family:Arial; text-align:justify; width:50%;">
-							<h3 style="font-weight:600; font-size:1.2rem;"><b>Identificación:</b></h3>
-                			<p style="font-weight:normal; font-size:13px;">'.$resultado[0]["identificacion"].'</p>
+							<h3 style="font-weight:600; font-size:1.2rem;"><b>Dirección:</b></h3>
+                			<p style="font-weight:normal; font-size:13px;">'.$resultado[0]["direccion"].'</p>
 						</td>
 					</tr>
 				</tbody>
@@ -321,7 +322,7 @@ function guardarDatos($post_vars) {
 	</section>
     </body>';
         $css = file_get_contents("../../Views/assets/css/lista.css");
-        $mpdf = new mPDF('c','A4');
+        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L']);
         $mpdf->defaultheaderfontsize=14;
         $mpdf->defaultheaderfontstyle='B';
         $mpdf->defaultheaderline=4;

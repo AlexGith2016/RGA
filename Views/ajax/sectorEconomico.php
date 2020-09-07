@@ -38,7 +38,7 @@
 					<div class="row">
 						<form class="form-horizontal" role="form" id="formSector" method="POST">
 							<input id="opcion" name="opcion" value="POST" type="hidden">
-							<input id="sectorEconomicoID" name="sectorEconomicoID" value="" type="hidden">
+							<input id="sectorEconomicoId" name="sectorEconomicoId" value="" type="hidden">
 							<div class="form-group">
 								<label class="col-sm-4 control-label text-info">Nombre del sector</label>
 								<div class="col-sm-5">
@@ -46,12 +46,12 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<div style="" class="col-md-offset-3 col-md-3 text-center">
-									<button id="btnEnviar" type="submit" class="btn btn-primary" style="">
+								<div class="col-md-offset-3 col-md-3 text-center">
+									<button id="btnEnviar" type="submit" class="btn btn-primary">
 										<span><i class="fa fa-save"></i></span> Guardar
 									</button>
 								</div>
-								<div style="" class="col-md-3 text-center">
+								<div class="col-md-3 text-center">
 									<button type="button" class="btn btn-default" onclick="cancelar();" data-dismiss="modal">
 										<span class="text-danger"><i class="fa fa-reply txt-danger"></i></span> Cancelar
 									</button>
@@ -113,7 +113,7 @@
 	
 	var limpiar_texto = function() {///////////////////////////////limpiar texto del formulario
 		$("#opcion").val("POST");
-		$("#sectorEconomicoID").val("");
+		$("#sectorEconomicoId").val("");
 		$("#nombreSectorEc").val("");
 	}
 ///////////////////////////////Ejecutar el metodo DataTable para llenar la Tabla////////////////////////////////
@@ -190,7 +190,7 @@
 		$(tbody).on("click", "button.editarSector", function() {
 			var datos = table.row($(this).parents("tr")).data();
 			$("#formSector input#nombreSectorEc").val(datos.nombreSectorEc);
-			$("#formSector input#sectorEconomicoID").val(datos.sectorEconomicoID);
+			$("#formSector input#sectorEconomicoId").val(datos.sectorEconomicoId);
 			$("#formSector input#opcion").val("PUT");
 			console.log("actualizar");
 			$('.modalSector').modal({
@@ -207,9 +207,9 @@
 	var obtener_id_eliminar = function(tbody, table) {//parametro(id_tabla, objeto dataTable)
 		$(tbody).on("click", "button.eliminarSector", function() {
 			var datos = table.row($(this).parents("tr")).data();
-			formElim =	"<p Style='text-align:center; color:salmon; font-size: large;'>¿Desea borrar este sector económico?</p>"+
+			var formElim =	"<p Style='text-align:center; color:salmon; font-size: large;'>¿Desea borrar este sector económico?</p>"+
 						"<form id='frmEliminarSector' action='' method='DELETE'>"+
-							"<input type='hidden' id='sectorEconomicoID' name='sectorEconomicoID' value=''>"+
+							"<input type='hidden' id='sectorEconomicoId' name='sectorEconomicoId' value=''>"+
 							"<input type='hidden' id='opcion' name='opcion' value='DELETE'>"+
 							"<div class='text-center'> "+
 							"<button type='submit' id='eliminar_sector' class='btn btn-danger btn-label-left'"+
@@ -220,7 +220,7 @@
 						"</form>";
 			mostrarMensaje("#dialogElim", "Eliminar sector económico", formElim, "danger");
 			$('#dialogElim #miModal').on('shown.bs.modal', function (e) {
-				$("#frmEliminarSector input#sectorEconomicoID").val(datos.sectorEconomicoID);
+				$("#frmEliminarSector input#sectorEconomicoId").val(datos.sectorEconomicoId);
 				$("#frmEliminarSector input#opcion").val("DELETE");
 			});
 			console.log("eliminar");

@@ -20,7 +20,7 @@ class SectorEconomicoModel{
 	}
 
 	public function listarSectoresEconomicos(){
-	    $sql = "select * from cia.sectoreconomico;";
+	    $sql = "select * from sectoreconomico;";
 	    try {
 	        $this->conClass = Conexion::getInstance();
 	        $this->con = Conexion::getConnection();
@@ -36,7 +36,7 @@ class SectorEconomicoModel{
 	
 	public function guardarRegistro(SectorEconomico $se){
 		if($se instanceof SectorEconomico){
-			$sql = "INSERT INTO cia.sectoreconomico (nombreSectorEc) VALUES (?);";
+			$sql = "INSERT INTO sectoreconomico (nombreSectorEc) VALUES (?);";
 		    try {
 		        $this->conClass = Conexion::getInstance();
 		        $this->con = Conexion::getConnection();
@@ -56,7 +56,7 @@ class SectorEconomicoModel{
 	
 	public function actualizarDatos(SectorEconomico $se){
 		if($se instanceof SectorEconomico){
-			$sql = "UPDATE `cia`.`sectoreconomico` SET `nombreSectorEc`=? WHERE `sectorEconomicoID`=?;";
+			$sql = "UPDATE `sectoreconomico` SET `nombreSectorEc`=? WHERE `sectorEconomicoId`=?;";
 		    try {
 		        $this->conClass = Conexion::getInstance();
 		        $this->con = Conexion::getConnection();
@@ -78,7 +78,7 @@ class SectorEconomicoModel{
 	
 	public function eliminarDatos(SectorEconomico $se){
 		if($se instanceof SectorEconomico){
-			$sql = "DELETE FROM cia.sectoreconomico where sectorEconomicoID = ?;";
+			$sql = "DELETE FROM cia.sectoreconomico where sectorEconomicoId = ?;";
 		    try {
 		        $this->conClass = Conexion::getInstance();
 		        $this->con = Conexion::getConnection();

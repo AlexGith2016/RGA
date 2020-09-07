@@ -145,7 +145,25 @@ function graficar(opcion){
 		meses = ["Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 		mesesNum = [7, 8, 9, 10, 11, 12];
 	}
-	$.ajax({
+	var totales = [];
+	//info = JSON.parse(info);
+	for (var i = 0; i<mesesNum.length;i++) {
+		var igual = true;
+		totales[i] = i+1*10
+	}
+	/* if(info.length <= 0)
+		totales = [0,0,0,0,0,0]; */
+	
+	if(opcion == 1){//al cargar
+		chartM(meses, totales);
+	}else if(opcion == 2){//al hacer click
+		window.graf.data.labels.splice(0);
+		window.graf.data.datasets.forEach((dataset) => { dataset.data.splice(0); });
+		window.graf.data.labels = meses;
+		window.graf.data.datasets.forEach((dataset) => { dataset.data = totales; });
+		window.graf.update();
+	}
+	/* $.ajax({
 		type: "GET",
 		url: 'core/Controllers/EstudianteController.php',
 		data: {"mesInicio":mes1, "mesFin":mes2, "anio": anio, "opcion": 4}
@@ -180,7 +198,7 @@ function graficar(opcion){
         
    }).fail(function () {
         mostrarMensaje("#dialogM", "ERROR", "¡No se logró realizar la acción!", "danger");
-   });
+   }); */
 }
 
 function LoadDataTablesScripts(callback){

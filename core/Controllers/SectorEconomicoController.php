@@ -1,6 +1,6 @@
 <?php
     use Models\SectorEconomicoModel;
-    use Models\EmpresaModel;
+    use Models\SolicitanteModel;
     use Models\Conexion;
 	use Entities\Usuario;
 	use Entities\Rol;
@@ -142,7 +142,7 @@
         $seModel = new SectorEconomicoModel();
         $se = new SectorEconomico();
         $se->setnombreSectorEc(trim($put_Vars["nombreSectorEc"]));
-        $se->setSectorEconomicoID(trim($put_Vars["sectorEconomicoID"]));
+        $se->setSectorEconomicoID(trim($put_Vars["sectorEconomicoId"]));
         $valid = $se->validarDatos(true);
         if($valid){
             $listaSE = $seModel->listarSectoresEconomicos();
@@ -176,27 +176,27 @@
     function eliminar($delete_vars){
         $seModel = new SectorEconomicoModel();
         $se = new SectorEconomico();
-        $se->setSectorEconomicoID(trim($delete_vars["sectorEconomicoID"]));
+        $se->setSectorEconomicoID(trim($delete_vars["sectorEconomicoId"]));
         
         if($se->getsectorEconomicoID() !== null && !empty($se->getsectorEconomicoID()) && is_numeric($se->getsectorEconomicoID()))
             $valid = true;
     	else
     		$valid = false;
         if($valid){
-            require_once("../Models/EmpresaModel.php");
+            require_once("../Models/SolicitanteModel.php");
             $se->setSectorEconomicoID(( int ) $se->getsectorEconomicoID());
-            $empresaModel = new EmpresaModel();
-            $sql = $sql = "select e.sectorEconomicoID from cia.empresa e where e.sectorEconomicoID = ". $se->getsectorEconomicoID().";";
-            $listaEm = $empresaModel->listarEmpresas($sql);
+            $solicitanteModel = new SolicitanteModel();
+            $sql = $sql = "select s.sectorEconomicoId from solicitante s where s.sectorEconomicoId = ". $se->getsectorEconomicoID().";";
+            $listaEm = $solicitanteModel->listarSolicitantes($sql);
             if(count($listaEm) > 0){
-                $info['mensaje'] = "<p>No puede borrar este registro ya que hay empresas ascociados a él, cambie el sector de esas empresas para eliminar este registro</p>";
+                $info['mensaje'] = "<p>No puede borrar este registro ya que hay solicitantes ascociados a él, cambie el sector de los solicitantes para eliminarlo</p>";
                 $info['titulo'] = "INCORRECTO";
                 $info['tipo'] = "warning";
-                $empresaModel->con = null;
+                $solicitanteModel->con = null;
                 Conexion::setConnection(null);
                 return $info;
             }
-            $empresaModel->con = null;
+            $solicitanteModel->con = null;
             $r = (int) $seModel->eliminarDatos($se);
             if($r > 0){
                 $seModel->con = null;
