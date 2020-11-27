@@ -155,7 +155,7 @@
                     require_once("core/Models/SolicitanteModel.php");
                     use Models\SolicitanteModel;
                     $solicitanteModel = new SolicitanteModel();
-                    $sql = "select COUNT(*) from cia.solicitante s where s.activo =1;";
+                    $sql = "select COUNT(*) from solicitante s where s.activo =1;";
                     $l = $solicitanteModel->listarSolicitantes($sql);
 	            $cd = $l[0][0];
                     $solicitanteModel->con = null;

@@ -179,7 +179,7 @@ function guardarDatos($post_vars) {
 //////////////////////////////7//////////////////////////////////////imprimir lista de solicitantes/////////////////////////////////////////////////////////
     function imprimirLista(){
         $solicitanteModel = new SolicitanteModel();
-        $sql = "select * from cia.solicitante s where s.activo = 1;";
+        $sql = "select * from solicitante s where s.activo = 1;";
         $resultados = $solicitanteModel->listarSolicitantes($sql);
         $solicitanteModel->con = null;
         Conexion::setConnection(null);
@@ -277,7 +277,7 @@ function guardarDatos($post_vars) {
         else
             die();
         $solicitanteModel = new SolicitanteModel();
-        $sql = "select * from cia.solicitante s where s.activo = 1 and s.solicitanteId = $id;";
+        $sql = "select * from solicitante s where s.activo = 1 and s.solicitanteId = $id;";
         $resultado = $solicitanteModel->listarSolicitantes($sql);
         $solicitanteModel->con = null;
         Conexion::setConnection(null);
