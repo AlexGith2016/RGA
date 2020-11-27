@@ -20,7 +20,7 @@ class UniversidadModel{
 	}
 
 	public function listarUniversidaddes(){
-	    $sql = "select * from cia.universidad;";
+	    $sql = "select * from universidad;";
 	    try {
 	        $this->conClass = Conexion::getInstance();
 	        $this->con = Conexion::getConnection();
@@ -36,7 +36,7 @@ class UniversidadModel{
 	
 	public function guardarRegistro(Universidad $u){
 		if($u instanceof Universidad){
-			$sql = "INSERT INTO cia.universidad (nombreU) VALUES (?);";
+			$sql = "INSERT INTO universidad (nombreU) VALUES (?);";
 		    try {
 		        $this->conClass = Conexion::getInstance();
 		        $this->con = Conexion::getConnection();
@@ -56,7 +56,7 @@ class UniversidadModel{
 	
 	public function actualizarDatos(Universidad $u){
 		if($u instanceof Universidad){
-			$sql = "UPDATE `cia`.`universidad` SET `nombreU`=? WHERE `universidadID`=?;";
+			$sql = "UPDATE `universidad` SET `nombreU`=? WHERE `universidadID`=?;";
 		    try {
 		        $this->conClass = Conexion::getInstance();
 		        $this->con = Conexion::getConnection();
@@ -78,7 +78,7 @@ class UniversidadModel{
 	
 	public function eliminarDatos(Universidad $u){
 		if($u instanceof Universidad){
-			$sql = "DELETE FROM cia.universidad where universidadID = ?;";
+			$sql = "DELETE FROM universidad where universidadID = ?;";
 		    try {
 		        $this->conClass = Conexion::getInstance();
 		        $this->con = Conexion::getConnection();

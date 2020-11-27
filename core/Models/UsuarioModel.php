@@ -21,7 +21,7 @@ class UsuarioModel{
 	}
 
 	public function listarUsuarios(){
-	    $sql = "select * from cia.usuario;";
+	    $sql = "select * from usuario;";
 	    try {
 	        $this->conClass = Conexion::getInstance();
 	        $this->con = Conexion::getConnection();
@@ -37,8 +37,8 @@ class UsuarioModel{
 	
 	public function buscarUsuario(Usuario $usuario){
 		if($usuario instanceof Usuario){
-			$sql = "SELECT u.nombreUsuario, u.contra, u.rolID, r.nombreRol FROM cia.usuario u 
-				inner join cia.rol r on u.rolID = r.rolID 
+			$sql = "SELECT u.nombreUsuario, u.contra, u.rolID, r.nombreRol FROM usuario u 
+				inner join .rol r on u.rolID = r.rolID 
 				where u.nombreUsuario = ? and u.contra = ?;";
 		    try {
 		        $this->conClass = Conexion::getInstance();
@@ -56,7 +56,7 @@ class UsuarioModel{
 	
 	public function actualizarDatos(Usuario $usuario, $newNom){
 		if($usuario instanceof Usuario){
-			$sql = "UPDATE `cia`.`usuario` SET `nombreUsuario`=?, `contra`=? WHERE `nombreUsuario`=?;";
+			$sql = "UPDATE `usuario` SET `nombreUsuario`=?, `contra`=? WHERE `nombreUsuario`=?;";
 		    try {
 		        $this->conClass = Conexion::getInstance();
 		        $this->con = Conexion::getConnection();

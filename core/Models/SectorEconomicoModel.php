@@ -78,7 +78,7 @@ class SectorEconomicoModel{
 	
 	public function eliminarDatos(SectorEconomico $se){
 		if($se instanceof SectorEconomico){
-			$sql = "DELETE FROM cia.sectoreconomico where sectorEconomicoId = ?;";
+			$sql = "DELETE FROM sectoreconomico where sectorEconomicoId = ?;";
 		    try {
 		        $this->conClass = Conexion::getInstance();
 		        $this->con = Conexion::getConnection();
