@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="Página principal del sitio Rojas Gonzalez Abogados & Asociados de Nicaragua el cual es un sitio de consultoria de derechos, y es una de las firmas con más experiencia en Nicaragua">
+        <meta name="description" content="Página principal del sitio Rojas Gonzalez Abogados & Asociados de Nicaragua el cual es un sitio de consultoria y es una de las firmas con más experiencia en Nicaragua">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <META NAME="geo.position" CONTENT="latitude; longitude">
         <META NAME="geo.placename" CONTENT="Rojas Gonzáles Abogados $ Asociados Nicaragua">
