@@ -152,12 +152,13 @@ function guardarDatos($post_vars) {
         if ($r > 0) {
             $solicitanteModel->con = null;
             Conexion::setConnection(null);
-            $to_email = 'alexanderperalta54@gmail.com';
+            $to_email = 'karlilla5782@yahoo.es';
             $subject = 'Testing PHP Mail';
             $message = "<h1>Un solicitante ha realizado una consulta</h1> <h2>Datos del solicitante: </h2><hr style='height:2px;border-width:0;color:gray;background-color:gray'>".
-                    "<p><b>Nombre:</b>  ".$solicitante->getNombreCompleto()."</p>".
-                    "<p><b>Teléfono:</b>  ".$solicitante->getTelefono()."</p>".
-                    "<p><b>Correo:</b>  ".$solicitante->getCorreo()."</p>";
+                    "<p><b>Nombre: </b>  ".$solicitante->getNombreCompleto()."</p>".
+                    "<p><b>Teléfono: </b>  ".$solicitante->getTelefono()."</p>".
+                    "<p><b>Correo: </b>  ".$solicitante->getCorreo()."</p>".
+                    "<p><b>Verificar solicitud: </b> <a href='https://www.rojas-gonzalez.com/?view=Sesion'>rojas-gonzalez.com</a></p>";
             
             $headers = "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
