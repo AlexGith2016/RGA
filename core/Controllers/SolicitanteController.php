@@ -161,7 +161,7 @@ function guardarDatos($post_vars) {
             
             $headers = "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-            $headers .= 'From: au706518@gmail.com';
+            $headers .= 'From: admin@rojas-gonzalez.com';
             if (mail($to_email, $subject, $message, $headers)) {
                 return "CORRECTO";
             } else {
