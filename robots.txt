@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /ADP/
+Disallow: /core/
+Sitemap: https://www.rojas-gonzalez.com/sitemap.xml

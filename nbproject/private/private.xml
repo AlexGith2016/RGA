@@ -7,6 +7,7 @@
             <file>file:/C:/xampp/htdocs/buro/Views/gestor.php</file>
             <file>file:/C:/xampp/htdocs/buro/Views/home.php</file>
             <file>file:/C:/xampp/htdocs/buro/core/Models/Conexion.php</file>
+            <file>file:/C:/xampp/htdocs/buro/core/Controllers/SolicitanteController.php</file>
         </group>
     </open-files>
 </project-private>
