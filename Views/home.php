@@ -52,7 +52,7 @@
         <div class="top-content">
             <div class="top-content-text wow fadeInUp">
                 <div class="divider-2"><span></span></div>
-                <h1><a href="">ROJAS GONZÁLEZ ABOGADOS</a></h1>
+                <h1><a href="">ROJAS GONZÁLEZ ABOGADOS NICARAGUA</a></h1>
                 <div class="divider-2"><span></span></div>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
                 <div class="top-content-bottom-link">
